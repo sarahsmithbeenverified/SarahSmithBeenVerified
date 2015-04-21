@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mainview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+
+    <Button
+            android:id="@+id/tab1"
+            android:layout_height="wrap_content"
+            android:layout_width="122dp"
+            android:layout_gravity="bottom"
+            android:text="Tab 1"/>
+    <Button
+            android:id="@+id/tab2"
+            android:layout_width="122dp"
+            android:layout_height="wrap_content"
+            android:text="Tab 2"
+            android:layout_gravity="bottom"
+            android:layout_toRightOf="@+id/tab1"/>
+    <Button
+            android:id="@+id/tab3"
+            android:layout_width="122dp"
+            android:layout_height="wrap_content"
+            android:text="Tab 3"
+            android:layout_gravity="bottom"
+            android:layout_toRightOf="@+id/tab2"/>
+
+
+
+
+</LinearLayout>
+
