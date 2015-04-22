@@ -6,9 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -49,15 +57,45 @@ public class TabOne extends Activity {
             }
         });
 
-
+        // call setup JSONObject
+        JSONObject json = setupURL();
     }
-    public void setupURL(){
-
+    public JSONObject setupURL(){
+        InputStream is = null;
+        JSONObject jObj = null;
+        String json = "";
         try {
             URL url = new URL("https://api.github.com/users/BeenVerifiedInc/repos");
-            URLConnection urlConnection = url.openConnection();
-            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-        }catch (Exception e){}
+            HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
+            httpConn.setAllowUserInteraction(false);
+            httpConn.connect();
+
+            DefaultHttpClient httpClient = new DefaultHttpClient();
+            HttpPost httpPost = new HttpPost("https://api.github.com/users/BeenVerifiedInc/repos");
+
+            HttpResponse httpResponse = httpClient.execute(httpPost);
+            HttpEntity httpEntity = httpResponse.getEntity();
+            is = httpEntity.getContent();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            BufferedReader buffRead = new BufferedReader(new InputStreamReader(is, "iso-8859-1"), 8);
+            StringBuilder strBuilder = new StringBuilder();
+            String entry;
+            while((entry = buffRead.readLine())!= null){
+                strBuilder.append(entry);
+            }
+            is.close();
+            json = strBuilder.toString();
+
+            jObj = new JSONObject(json);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return jObj;
+
     }
 
 }

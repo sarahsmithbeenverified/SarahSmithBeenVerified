@@ -3,48 +3,43 @@ package com.example.SarahSmithBeenVerified;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 
-public class MyActivity extends Activity {
-    private Button tab1, tab2, tab3;
-
+/**
+ * Created by sesmith325 on 4/22/15.
+ */
+public class TabThree extends Activity {
+    private Button tab1, tab2;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+
+        getWindow().requestFeature(Window.FEATURE_PROGRESS);
+
+        this.setContentView(R.layout.activity_tab1);
+
 
         tab1 = (Button)findViewById(R.id.tab1);
         tab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(MyActivity.this,TabOne.class);
+                intent.setClass(TabThree.this,TabOne.class);
                 startActivity(intent);
             }
         });
-
 
         tab2 = (Button)findViewById(R.id.tab2);
         tab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(MyActivity.this,TabTwo.class);
+                intent.setClass(TabThree.this,TabTwo.class);
                 startActivity(intent);
             }
         });
 
-
-        tab3 = (Button)findViewById(R.id.tab3);
-        tab3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MyActivity.this,TabThree.class);
-                startActivity(intent);
-            }
-        });
     }
 }
