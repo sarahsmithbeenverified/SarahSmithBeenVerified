@@ -15,6 +15,8 @@ public class MyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        tab2 = (Button)findViewById(R.id.tab2);
+
         tab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
