@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:background="#ffffff" >
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/scrollview"
+                android:layout_width="fill_parent"
+                android:layout_height="450dp"
+                android:fillViewport="true"
+                android:layout_gravity="left">
+    </ScrollView>
+    <Button
+            android:id="@+id/testbutton"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="Test"
+            android:layout_centerInParent="true"/>
+    <LinearLayout
+            android:id="@+id/buttonlayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="false"
+            android:orientation="horizontal">
+
+        <Button
+                android:id="@+id/tab1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="Tab 1"
+                android:background="@drawable/android_car"/>
+        <Button
+                android:id="@+id/tab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tab 2"
+                android:background="@drawable/android_flat"
+                android:layout_toRightOf="@+id/tab1"/>
+        <Button
+                android:id="@+id/tab3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tab 3"
+                android:background="@drawable/android_car"
+                android:layout_toRightOf="@+id/tab2"/>
+
+
+    </LinearLayout>
+</RelativeLayout>

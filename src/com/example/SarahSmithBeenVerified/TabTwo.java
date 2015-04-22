@@ -1,13 +1,16 @@
 package com.example.SarahSmithBeenVerified;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,13 +19,26 @@ import android.widget.Toast;
  * Created by sesmith325 on 4/21/15.
  */
 public class TabTwo extends Activity {
+    private Button tab1, tab3;
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
         getWindow().requestFeature(Window.FEATURE_PROGRESS);
-        
+
         this.setContentView(R.layout.activity_tab2);
+
+        tab1 = (Button)findViewById(R.id.tab1);
+        tab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(TabTwo.this,TabOne.class);
+                startActivity(intent);
+            }
+        });
+
+
 
     }
 
