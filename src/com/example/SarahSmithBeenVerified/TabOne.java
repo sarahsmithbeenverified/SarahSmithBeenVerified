@@ -41,7 +41,9 @@ public class TabOne extends Activity {
                 //when play is clicked show stop button and hide play button
                 View b = findViewById(R.id.testbutton);
                 b.setVisibility(View.GONE);
-
+                Intent intent = new Intent();
+                intent.setClass(TabOne.this,TabOneTable.class);
+                startActivity(intent);
             }
         });
 
@@ -59,6 +61,12 @@ public class TabOne extends Activity {
 
         // call setup JSONObject
         JSONObject json = setupURL();
+
+        try {
+            String fullName = json.get("full_name").toString();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     public JSONObject setupURL(){
         InputStream is = null;
@@ -67,7 +75,6 @@ public class TabOne extends Activity {
         try {
             URL url = new URL("https://api.github.com/users/BeenVerifiedInc/repos");
             HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
-            httpConn.setAllowUserInteraction(false);
             httpConn.connect();
 
             DefaultHttpClient httpClient = new DefaultHttpClient();
